@@ -1,4 +1,4 @@
-require './app'
+require './app/app'
 
 feature 'Viewing links' do
 
