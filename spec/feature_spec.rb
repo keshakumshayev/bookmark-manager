@@ -6,7 +6,7 @@ feature 'Viewing links' do
     Link.create(url: 'http://www.makersacademy.com', title: 'Makers Academy')
     visit '/links'
     expect(page.status_code).to eq 200
-    within 'ul#links' do
+    within 'ol#links' do
       expect(page).to have_content('Makers Academy')
     end
   end
@@ -21,8 +21,8 @@ feature 'creating links' do
 
     expect(current_path).to eq '/links'
 
-    within 'ul#links' do
-      expect(page).to have_content('This is Zombo')
+    within 'ol#links' do
+      expect(page).to have_content('Zombo')
     end
   end
 end

@@ -1,9 +1,15 @@
+# ENV["RACK_ENV"] ||= "development"
+
 require_relative 'models/link'
 require 'sinatra/base'
 
 class BookmarkManager < Sinatra::Base
   enable :sessions
   set :session_secret, 'yes'
+
+  get '/' do
+    redirect '/links'
+  end
 
   get '/links' do
     @links = Link.all
