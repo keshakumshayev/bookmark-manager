@@ -43,3 +43,25 @@ feature 'Adding tags' do
   end
 
 end
+
+
+feature 'filtering by tags' do
+  scenario 'I can add filter all links tagged \'bubbles\'' do
+    visit '/links/new'
+    fill_in 'url',   with: 'http://www.shower.com/'
+    fill_in 'title', with: 'Sadness'
+    fill_in 'tags',  with: 'no bubbles'
+    click_button 'Create link'
+
+    click_link 'Add a bookmark'
+
+    fill_in 'url',   with: 'http://www.bubblebath.com/'
+    fill_in 'title', with: 'Bubble Bath'
+    fill_in 'tags',  with: 'bubbles'
+    click_button 'Create link'
+
+    visit '/links/bubbles'
+    expect(page).to have_content('bubbles')
+    expect(page).to have_no_content('no bubbles')
+  end
+end

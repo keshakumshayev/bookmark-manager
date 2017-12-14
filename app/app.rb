@@ -20,6 +20,15 @@ class BookmarkManager < Sinatra::Base
     erb(:'links/add_link')
   end
 
+  post '/links/:tag' do
+    redirect "/links/#{params[:tag]}"
+  end
+
+  get '/links/:tag' do
+    @links = Tag.all({name: params[:tag]}).links
+    erb(:'links/index')
+  end
+
   post '/links' do
     link = Link.new(url: params[:url],     # 1. Create a link
                   title: params[:title])
