@@ -20,7 +20,7 @@ class BookmarkManager < Sinatra::Base
     erb(:'links/add_link')
   end
 
-  post '/links/:tag' do
+  post '/links/filter_by_tag' do
     redirect "/links/#{params[:tag]}"
   end
 
