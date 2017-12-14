@@ -28,9 +28,7 @@ h2 {
 
       URL: <%= link.url.to_s %>
 
-      Tags:<% link.tags.each do |tag| %>
-            <%= tag.name %>
-           <% end %>
+      Tags:<%= link.tags.map{|tag| tag.name}.join('; ') %>
 
     </li>
   <% end %>

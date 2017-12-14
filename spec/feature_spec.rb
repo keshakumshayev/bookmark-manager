@@ -65,3 +65,14 @@ feature 'filtering by tags' do
     expect(page).to have_no_content('no bubbles')
   end
 end
+
+feature 'adding multiple tags' do
+  scenario 'I can add link with multiple tags' do
+    visit '/links/new'
+    fill_in 'url',   with: 'http://www.bubblebath.com/'
+    fill_in 'title', with: 'Bubble Bath'
+    fill_in 'tags',  with: 'bubbles,yes'
+    click_button 'Create link'
+    expect(page).to have_content('bubbles; yes')
+  end
+end
