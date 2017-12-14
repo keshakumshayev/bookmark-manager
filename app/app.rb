@@ -8,7 +8,7 @@ class BookmarkManager < Sinatra::Base
   set :session_secret, 'yes'
 
   get '/' do
-    redirect '/links'
+    redirect '/links/new'
   end
 
   get '/links' do
@@ -24,8 +24,8 @@ class BookmarkManager < Sinatra::Base
     link = Link.new(url: params[:url],     # 1. Create a link
                   title: params[:title])
     tag  = Tag.first_or_create(name: params[:tags])  # 2. Create a tag for the link
-    link.tags << tag                       # 3. Adding the tag to the link's DataMapper collection.
-    link.save                              # 4. Saving the link.
+    link.tags << tag
+    link.save
     redirect to('/links')
   end
 

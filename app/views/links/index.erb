@@ -27,6 +27,11 @@ h2 {
       Title: <%= "#{link.title}" %>
 
       URL: <%= link.url.to_s %>
+
+      Tags:<% link.tags.each do |tag| %>
+            <%= tag.name %>
+           <% end %>
+
     </li>
   <% end %>
 </ol>
