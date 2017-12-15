@@ -1,4 +1,3 @@
-# require './app/data_mapper_setup'
 require 'bcrypt'
 
 class User
