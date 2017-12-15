@@ -1,4 +1,4 @@
-# require './app/data_mapper_setup'
+require './app/data_mapper_setup'
 
 class Tag
   include DataMapper::Resource
