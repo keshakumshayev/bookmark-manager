@@ -8,7 +8,8 @@ class BookmarkManager < Sinatra::Base
   set :session_secret, 'yes'
 
   get '/' do
-    redirect '/links'
+    erb(:'links/home')
+    # redirect '/links'
   end
 
   get '/links' do
@@ -37,6 +38,14 @@ class BookmarkManager < Sinatra::Base
     end
     link.save
     redirect to('/links')
+  end
+
+  get '/signup' do
+    'fail'
+  end
+
+  get '/signin' do
+    'fail'
   end
 
   run! if app_file == $0

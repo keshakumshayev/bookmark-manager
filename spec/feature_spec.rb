@@ -80,11 +80,13 @@ end
 feature 'User account' do
   scenario 'home page has a sign up button' do
     visit '/'
-    page.should find_button("Sign Up").click
+    click_link("Sign Up")
+    expect(page).to have_content('Welcome to Bookmark Manager. Enter your information to sign up')
   end
 
   scenario 'home page has a sign in button' do
     visit '/'
-    page.should find_button("Sign In").click
+    click_link("Sign In")
+    expect(page).to have_content('Enter your login information to sign in')
   end
 end
