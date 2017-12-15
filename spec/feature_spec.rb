@@ -76,3 +76,15 @@ feature 'adding multiple tags' do
     expect(page).to have_content('bubbles; yes')
   end
 end
+
+feature 'User account' do
+  scenario 'home page has a sign up button' do
+    visit '/'
+    page.should find_button("Sign Up").click
+  end
+
+  scenario 'home page has a sign in button' do
+    visit '/'
+    page.should find_button("Sign In").click
+  end
+end
