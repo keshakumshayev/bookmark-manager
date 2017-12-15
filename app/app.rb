@@ -55,9 +55,9 @@ class BookmarkManager < Sinatra::Base
 
 
 
-  # get '/signin' do
-  #   erb(:'links/signin')
-  # end
+  get '/signin' do
+    erb(:'links/signin')
+  end
 
   helpers do
    def current_user
