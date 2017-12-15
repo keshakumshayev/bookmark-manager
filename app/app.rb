@@ -41,11 +41,11 @@ class BookmarkManager < Sinatra::Base
   end
 
   get '/signup' do
-    'fail'
+    erb(:'links/signup')
   end
 
   get '/signin' do
-    'fail'
+    erb(:'links/signin')
   end
 
   run! if app_file == $0
