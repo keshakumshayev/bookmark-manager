@@ -90,3 +90,11 @@ feature 'User account' do
     expect(page).to have_content('Enter your login information to sign in')
   end
 end
+
+feature 'User sign up' do
+  scenario 'I can sign up as a new user' do
+    expect{ sign_up }.to change(User, :count).by(1)
+    expect(page).to have_content('Welcome, example@gmail.com')
+    expect(User.first.email).to eq('example@gmail.com')
+  end
+end

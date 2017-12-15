@@ -12,22 +12,8 @@ class BookmarkManager < Sinatra::Base
     # redirect '/links'
   end
 
-  get '/links' do
-    @links = Link.all
-    erb(:'links/index')
-  end
-
   get '/links/new' do
     erb(:'links/add_link')
-  end
-
-  post '/links/filter_by_tag' do
-    redirect "/links/#{params[:tag]}"
-  end
-
-  get '/links/:tag' do
-    @links = Tag.all({name: params[:tag]}).links
-    erb(:'links/index')
   end
 
   post '/links' do
@@ -40,12 +26,44 @@ class BookmarkManager < Sinatra::Base
     redirect to('/links')
   end
 
-  get '/signup' do
+  get '/links' do
+    @links = Link.all
+    erb(:'links/index')
+  end
+
+  post '/links/filter_by_tag' do
+    redirect "/links/#{params[:tag]}"
+  end
+
+  get '/links/:tag' do
+    @links = Tag.all({name: params[:tag]}).links
+    erb(:'links/index')
+  end
+
+  get '/users/new' do
     erb(:'links/signup')
   end
 
+  post '/users' do
+    user = User.create(email: params[:email],
+                        password: params[:password])
+    session[:user_id] = user.id
+    redirect '/links'
+  end
+
+
+
+
+
+
   get '/signin' do
     erb(:'links/signin')
+  end
+
+  helpers do
+   def current_user
+     @current_user ||= User.get(session[:user_id])
+   end
   end
 
   run! if app_file == $0

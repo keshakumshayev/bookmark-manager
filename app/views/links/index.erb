@@ -1,27 +1,6 @@
-<style>
-ol {
-  position: absolute;
-  left: 30%;
-  top: 15%
-}
-
-h1 {
-  position: absolute;
-  left: 45%;
-}
-
-h2 {
-  position: absolute;
-  left: 40%;
-  top: 8%
-}
-
-</style>
-
-
 <h1 align='center'> Links </h1>
-
-<ol align='center' id='links'>
+<center>
+<ol id='links'>
   <% @links.each do |link| %>
     <li>
       Title: <%= "#{link.title}" %>
@@ -33,6 +12,7 @@ h2 {
     </li>
   <% end %>
 </ol>
+</center>
 <div>
   <h2 align='center'>
     <a href='/links/new' >Add a bookmark</a>
